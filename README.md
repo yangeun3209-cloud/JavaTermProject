@@ -52,3 +52,61 @@
 
 ### GitHub 저장소 주소
 https://github.com/yangeun3209-cloud/JavaTermProject
+
+## 4. 요구사항 정의
+
+### 기능 요구사항 (Functional Requirements)
+
+| ID | 요구사항 | 우선순위 |
+|----|----------|----------|
+| F-01 | 시간표 등록 기능 | 높음 |
+| F-02 | 시간표 수정 및 삭제 기능 | 높음 |
+| F-03 | 요일별 시간표 조회 기능 | 높음 |
+| F-04 | 수업 시작 전 알림 기능 | 높음 |
+| F-05 | 시간표 파일 저장 및 불러오기 | 중간 |
+
+### 비기능 요구사항 (Non-Functional Requirements)
+
+- 프로그램 실행 후 3초 이내 메뉴 화면 출력
+- 직관적이고 사용하기 쉬운 콘솔 UI 제공
+- 데이터 저장 시 오류 없이 파일 생성
+- 유지보수가 쉬운 클래스 구조 설계
+- 반복 실행 시 안정적으로 동작할 것
+
+---
+
+## 5. 시스템 설계
+
+### 프로그램 구조
+
+```text
+사용자 → 메뉴 선택 → 시간표 관리 / 알림 실행 → 파일 저장
+```
+
+## 6. 데이터 모델
+
+| 엔터티 | 필드 | 설명 |
+|-------|------|------|
+| ScheduleEntry | id, title, day, startTime, endTime, location, notes | 단일 수업 항목 |
+| UserSettings | notifyBeforeMinutes, storagePath | 알림/저장 설정 |
+
+## 7. 클래스 설계 (요약)
+
+- Main: 앱 진입점, 초기화
+- ConsoleUI: 메뉴/입력 처리
+- ScheduleManager: CRUD 로직, 요일별 조회
+- FileStorage: 파일 입출력 (JSON/CSV)
+- Notifier: 알림 스케줄링 및 실행
+
+## 8. 실행 시나리오 (예)
+
+1. 프로그램 실행 → 메뉴 출력  
+2. 시간표 추가(F-01) → 저장(F-05)  
+3. 알림 설정 후 지정 시간에 알림(F-04)
+
+## 9. 빌드·실행
+
+- 컴파일: javac -d out src\**\*.java  
+- 실행: java -cp out Main
+
+(필요시 Gradle/Maven 설정 추가 예정)
