@@ -17,7 +17,7 @@
 ---
 # 프로젝트 구조
 
-```text
+
 JavaTermProject
 ├─ docs
 │  ├─ project-overview.md
