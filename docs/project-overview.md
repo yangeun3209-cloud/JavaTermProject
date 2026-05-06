@@ -15,9 +15,9 @@
 - 팀 프로젝트 협업 능력 향상
 
 ---
-# 프로젝트 구조
+## 프로젝트 구조
 
-
+```text
 JavaTermProject
 ├─ docs
 │  ├─ project-overview.md
@@ -32,7 +32,7 @@ JavaTermProject
 │
 ├─ README.md
 └─ .gitignore
-
+```
 ## 2. 프로젝트 배경 및 범위
 
 ### 배경
@@ -161,7 +161,7 @@ https://github.com/yangeun3209-cloud/JavaTermProject
 6. 저장 / 불러오기
 0. 종료
 -----------------------
-선택:
+선택: 
 ```
 
 ---
