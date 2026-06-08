@@ -148,4 +148,4 @@ JavaTermProject
     └─ TimetableApp.java
 ```
 
-위와 같은 구조로 프로젝트를 구성하여 관리하였다.
+위와 같은 구조로 프로젝트를 구성하여 관리하였다..
