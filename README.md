@@ -216,5 +216,5 @@ https://github.com/yangeun3209-cloud/JavaTermProject
 
 ---
 
-작성자: 양은찬
+작성자: 양은찬, 우민지 
 
