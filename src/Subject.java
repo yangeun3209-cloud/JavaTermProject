@@ -1,6 +1,9 @@
 import java.io.Serializable;
 
 public class Subject implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String subjectName;
     private String day;
     private String startTime;
@@ -57,9 +60,9 @@ public class Subject implements Serializable {
 
     @Override
     public String toString() {
-        return "[과목명] " + subjectName +
-                " | [요일] " + day +
-                " | [시간] " + startTime + " ~ " + endTime +
-                " | [강의실] " + classroom;
+        return String.format(
+                "[과목명] %s | [요일] %s | [시간] %s ~ %s | [강의실] %s",
+                subjectName, day, startTime, endTime, classroom
+        );
     }
 }

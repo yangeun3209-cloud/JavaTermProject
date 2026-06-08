@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class ScheduleManager {
     private ArrayList<Subject> subjects = new ArrayList<>();
-    private final String FILE_NAME = "timetable.dat";
+    private static final String FILE_NAME = "timetable.dat";
 
     public void addSubject(Subject subject) {
         if (isDuplicate(subject)) {
@@ -92,7 +92,7 @@ public class ScheduleManager {
             oos.writeObject(subjects);
             System.out.println("시간표가 파일에 저장되었습니다.");
         } catch (IOException e) {
-            System.out.println("파일 저장 중 오류가 발생했습니다.");
+            System.out.println("파일 저장 중 오류가 발생했습니다: " + e.getMessage());
         }
     }
 
@@ -101,14 +101,15 @@ public class ScheduleManager {
             subjects = (ArrayList<Subject>) ois.readObject();
             System.out.println("시간표를 파일에서 불러왔습니다.");
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("불러올 파일이 없거나 오류가 발생했습니다.");
+            System.out.println("불러올 파일이 없거나 오류가 발생했습니다: " + e.getMessage());
         }
     }
 
     private boolean isDuplicate(Subject newSubject) {
         for (Subject subject : subjects) {
             if (subject.getDay().equals(newSubject.getDay())
-                    && subject.getStartTime().equals(newSubject.getStartTime())) {
+                    && subject.getStartTime().equals(newSubject.getStartTime())
+                    && subject.getEndTime().equals(newSubject.getEndTime())) {
                 return true;
             }
         }

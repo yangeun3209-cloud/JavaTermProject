@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class TimetableApp {
-    private Scanner scanner = new Scanner(System.in);
-    private ScheduleManager manager = new ScheduleManager();
+    private final Scanner scanner = new Scanner(System.in);
+    private final ScheduleManager manager = new ScheduleManager();
 
     public void start() {
         while (true) {
@@ -62,6 +62,7 @@ public class TimetableApp {
         System.out.println("8. 파일 저장");
         System.out.println("9. 파일 불러오기");
         System.out.println("0. 종료");
+        System.out.println("============================");
     }
 
     private void addSubject() {
@@ -71,7 +72,7 @@ public class TimetableApp {
 
     private void showByDay() {
         System.out.print("조회할 요일 입력: ");
-        String day = scanner.nextLine();
+        String day = scanner.nextLine().trim();
         manager.showSubjectsByDay(day);
     }
 
@@ -96,29 +97,29 @@ public class TimetableApp {
 
     private void alertClass() {
         System.out.print("현재 요일 입력: ");
-        String day = scanner.nextLine();
+        String day = scanner.nextLine().trim();
 
         System.out.print("현재 시간 입력 예) 09:30 : ");
-        String time = scanner.nextLine();
+        String time = scanner.nextLine().trim();
 
         manager.alertClass(day, time);
     }
 
     private Subject inputSubjectInfo() {
         System.out.print("과목명: ");
-        String name = scanner.nextLine();
+        String name = scanner.nextLine().trim();
 
         System.out.print("요일: ");
-        String day = scanner.nextLine();
+        String day = scanner.nextLine().trim();
 
         System.out.print("시작 시간 예) 09:00 : ");
-        String startTime = scanner.nextLine();
+        String startTime = scanner.nextLine().trim();
 
         System.out.print("종료 시간 예) 10:30 : ");
-        String endTime = scanner.nextLine();
+        String endTime = scanner.nextLine().trim();
 
         System.out.print("강의실: ");
-        String classroom = scanner.nextLine();
+        String classroom = scanner.nextLine().trim();
 
         return new Subject(name, day, startTime, endTime, classroom);
     }
@@ -126,8 +127,7 @@ public class TimetableApp {
     private int inputInt() {
         while (true) {
             try {
-                int num = Integer.parseInt(scanner.nextLine());
-                return num;
+                return Integer.parseInt(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
                 System.out.print("숫자로 다시 입력하세요: ");
             }
