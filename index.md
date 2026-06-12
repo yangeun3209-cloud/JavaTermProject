@@ -6,18 +6,23 @@
 <title>시간표 알림 프로그램</title>
 
 <style>
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family: "Malgun Gothic", Arial, sans-serif;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    background: #f5f5f5;
-    line-height: 1.8;
+    font-family:"Malgun Gothic", Arial, sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+    background:#f5f5f5;
+    line-height:1.8;
 }
 
 header{
     text-align:center;
-    margin-bottom:40px;
+    margin-bottom:30px;
 }
 
 h1{
@@ -27,7 +32,7 @@ h1{
 h2{
     color:#1e3a5f;
     border-bottom:2px solid #ddd;
-    padding-bottom:10px;
+    padding-bottom:8px;
 }
 
 section{
@@ -36,6 +41,24 @@ section{
     margin-bottom:25px;
     border-radius:10px;
     box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav{
+    background:white;
+    padding:20px;
+    margin-bottom:25px;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a{
+    color:#1e3a5f;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    text-decoration:underline;
 }
 
 table{
@@ -58,13 +81,10 @@ th, td{
 
 img{
     max-width:100%;
-    border-radius:10px;
     border:1px solid #ccc;
+    border-radius:10px;
 }
 
-ul{
-    padding-left:25px;
-}
 </style>
 
 </head>
@@ -72,26 +92,49 @@ ul{
 <body>
 
 <header>
+
 <h1>📚 시간표 알림 프로그램</h1>
+
 <p>
 Java Swing GUI 기반 시간표 관리 프로그램<br>
 팀장 : 양은찬 | 팀원 : 우민지
 </p>
+
 </header>
 
+<nav>
+
+<h2>📌 목차</h2>
+
+<ol>
+<li><a href="#overview">프로젝트 개요</a></li>
+<li><a href="#goal">개발 목표</a></li>
+<li><a href="#features">주요 기능</a></li>
+<li><a href="#structure">클래스 구조</a></li>
+<li><a href="#gui">GUI 구현 화면</a></li>
+<li><a href="#implementation">핵심 구현 내용</a></li>
+<li><a href="#test">테스트 결과</a></li>
+<li><a href="#github">GitHub 관리</a></li>
+<li><a href="#release">Release</a></li>
+<li><a href="#conclusion">프로젝트 결론</a></li>
+</ol>
+
+</nav>
+
 <section>
-<h2>1. 프로젝트 개요</h2>
+
+<h2 id="overview">1. 프로젝트 개요</h2>
 
 <p>
 시간표 알림 프로그램은 학생들이 개인 시간표를 효율적으로 관리할 수 있도록 개발한 Java Swing GUI 프로그램이다.
-과목명, 요일, 시간, 강의실 정보를 등록하고 조회·수정·삭제할 수 있으며,
-수업 시작 전 알림 기능을 제공한다.
+과목명, 요일, 시간, 강의실 정보를 등록하고 조회·수정·삭제할 수 있으며 수업 시작 전 알림 기능을 제공한다.
 </p>
 
 </section>
 
 <section>
-<h2>2. 개발 목표</h2>
+
+<h2 id="goal">2. 개발 목표</h2>
 
 <ul>
 <li>개인 시간표 관리 편의성 향상</li>
@@ -105,7 +148,7 @@ Java Swing GUI 기반 시간표 관리 프로그램<br>
 
 <section>
 
-<h2>3. 주요 기능</h2>
+<h2 id="features">3. 주요 기능</h2>
 
 <ul>
 <li>시간표 등록</li>
@@ -124,9 +167,10 @@ Java Swing GUI 기반 시간표 관리 프로그램<br>
 
 <section>
 
-<h2>4. 클래스 구조</h2>
+<h2 id="structure">4. 클래스 구조</h2>
 
 <table>
+
 <tr>
 <th>클래스</th>
 <th>역할</th>
@@ -158,20 +202,20 @@ Java Swing GUI 기반 시간표 관리 프로그램<br>
 
 <section>
 
-<h2>5. GUI 구현 화면</h2>
+<h2 id="gui">5. GUI 구현 화면</h2>
 
 <p>
 Java Swing을 활용하여 GUI 기반 시간표 관리 프로그램을 구현하였다.
-사용자는 입력창과 버튼을 이용하여 시간표를 관리할 수 있다.
+사용자는 입력창과 버튼을 통해 시간표를 등록, 조회, 수정, 삭제할 수 있다.
 </p>
 
-<img src="image.png" alt="시간표 알림 프로그램 화면">
+<img src="image.png" alt="시간표 알림 프로그램 GUI">
 
 </section>
 
 <section>
 
-<h2>6. 핵심 구현 내용</h2>
+<h2 id="implementation">6. 핵심 구현 내용</h2>
 
 <ul>
 <li>시간표 등록 및 관리 기능 구현</li>
@@ -187,7 +231,7 @@ Java Swing을 활용하여 GUI 기반 시간표 관리 프로그램을 구현하
 
 <section>
 
-<h2>7. 테스트 결과</h2>
+<h2 id="test">7. 테스트 결과</h2>
 
 <table>
 
@@ -196,50 +240,15 @@ Java Swing을 활용하여 GUI 기반 시간표 관리 프로그램을 구현하
 <th>결과</th>
 </tr>
 
-<tr>
-<td>시간표 등록</td>
-<td>정상 동작</td>
-</tr>
-
-<tr>
-<td>전체 조회</td>
-<td>정상 동작</td>
-</tr>
-
-<tr>
-<td>요일별 조회</td>
-<td>정상 동작</td>
-</tr>
-
-<tr>
-<td>수정</td>
-<td>정상 동작</td>
-</tr>
-
-<tr>
-<td>삭제</td>
-<td>정상 동작</td>
-</tr>
-
-<tr>
-<td>시간순 정렬</td>
-<td>정상 동작</td>
-</tr>
-
-<tr>
-<td>수업 알림</td>
-<td>정상 동작</td>
-</tr>
-
-<tr>
-<td>파일 저장</td>
-<td>정상 동작</td>
-</tr>
-
-<tr>
-<td>파일 불러오기</td>
-<td>정상 동작</td>
-</tr>
+<tr><td>시간표 등록</td><td>정상 동작</td></tr>
+<tr><td>전체 조회</td><td>정상 동작</td></tr>
+<tr><td>요일별 조회</td><td>정상 동작</td></tr>
+<tr><td>수정</td><td>정상 동작</td></tr>
+<tr><td>삭제</td><td>정상 동작</td></tr>
+<tr><td>시간순 정렬</td><td>정상 동작</td></tr>
+<tr><td>수업 알림</td><td>정상 동작</td></tr>
+<tr><td>파일 저장</td><td>정상 동작</td></tr>
+<tr><td>파일 불러오기</td><td>정상 동작</td></tr>
 
 </table>
 
@@ -251,7 +260,7 @@ Java Swing을 활용하여 GUI 기반 시간표 관리 프로그램을 구현하
 
 <section>
 
-<h2>8. GitHub 관리</h2>
+<h2 id="github">8. GitHub 관리</h2>
 
 <ul>
 <li>GitHub 저장소를 활용한 프로젝트 관리</li>
@@ -269,9 +278,9 @@ GitHub를 통해 프로젝트 진행 과정과 소스 코드를 체계적으로 
 
 <section>
 
-<h2>9. Release</h2>
+<h2 id="release">9. Release</h2>
 
-<p><strong>버전 : v1.0.0</strong></p>
+<p><strong>Version : v1.0.0</strong></p>
 
 <ul>
 <li>시간표 등록</li>
@@ -287,11 +296,13 @@ GitHub를 통해 프로젝트 진행 과정과 소스 코드를 체계적으로 
 
 <section>
 
-<h2>10. 프로젝트 결론</h2>
+<h2 id="conclusion">10. 프로젝트 결론</h2>
 
 <p>
-본 프로젝트를 통해 Java 객체지향 프로그래밍, 파일 입출력, 예외 처리,
-GitHub 활용 방법을 학습할 수 있었다.
+시간표 알림 프로그램을 통해 Java 객체지향 프로그래밍, 파일 입출력, 예외 처리, GitHub 활용 방법을 학습할 수 있었다.
+</p>
+
+<p>
 또한 GUI 환경에서 사용자 친화적인 프로그램을 구현하며 실제 소프트웨어 개발 과정을 경험할 수 있었다.
 </p>
 
