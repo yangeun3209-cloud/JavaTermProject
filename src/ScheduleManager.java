@@ -6,102 +6,109 @@ public class ScheduleManager {
     private ArrayList<Subject> subjects = new ArrayList<>();
     private static final String FILE_NAME = "timetable.dat";
 
-    public void addSubject(Subject subject) {
+    public String addSubject(Subject subject) {
         if (isDuplicate(subject)) {
-            System.out.println("이미 같은 요일과 시간에 수업이 있습니다.");
-            return;
+            return "이미 같은 요일과 시간에 수업이 있습니다.";
         }
+
         subjects.add(subject);
-        System.out.println("시간표가 등록되었습니다.");
+        return "시간표가 등록되었습니다.";
     }
 
-    public void showAllSubjects() {
+    public String getAllSubjectsText() {
         if (subjects.isEmpty()) {
-            System.out.println("등록된 시간표가 없습니다.");
-            return;
+            return "등록된 시간표가 없습니다.";
         }
+
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < subjects.size(); i++) {
-            System.out.println((i + 1) + ". " + subjects.get(i));
+            sb.append(i + 1).append(". ").append(subjects.get(i)).append("\n");
         }
+
+        return sb.toString();
     }
 
-    public void showSubjectsByDay(String day) {
+    public String getSubjectsByDayText(String day) {
+        StringBuilder sb = new StringBuilder();
         boolean found = false;
 
         for (Subject subject : subjects) {
             if (subject.getDay().equals(day)) {
-                System.out.println(subject);
+                sb.append(subject).append("\n");
                 found = true;
             }
         }
 
         if (!found) {
-            System.out.println(day + "요일에 등록된 수업이 없습니다.");
+            return day + "요일에 등록된 수업이 없습니다.";
         }
+
+        return sb.toString();
     }
 
-    public void updateSubject(int index, Subject newSubject) {
+    public String updateSubject(int index, Subject newSubject) {
         if (index < 0 || index >= subjects.size()) {
-            System.out.println("잘못된 번호입니다.");
-            return;
+            return "잘못된 번호입니다.";
         }
 
         subjects.set(index, newSubject);
-        System.out.println("시간표가 수정되었습니다.");
+        return "시간표가 수정되었습니다.";
     }
 
-    public void deleteSubject(int index) {
+    public String deleteSubject(int index) {
         if (index < 0 || index >= subjects.size()) {
-            System.out.println("잘못된 번호입니다.");
-            return;
+            return "잘못된 번호입니다.";
         }
 
         subjects.remove(index);
-        System.out.println("시간표가 삭제되었습니다.");
+        return "시간표가 삭제되었습니다.";
     }
 
-    public void sortByTime() {
+    public String sortByTime() {
         subjects.sort(Comparator
                 .comparing(Subject::getDay)
                 .thenComparing(Subject::getStartTime));
 
-        System.out.println("시간표가 시간순으로 정렬되었습니다.");
+        return "시간표가 시간순으로 정렬되었습니다.";
     }
 
-    public void alertClass(String currentDay, String currentTime) {
+    public String getAlertClassText(String currentDay, String currentTime) {
+        StringBuilder sb = new StringBuilder();
         boolean found = false;
 
         for (Subject subject : subjects) {
-            if (subject.getDay().equals(currentDay)) {
-                if (subject.getStartTime().compareTo(currentTime) >= 0) {
-                    System.out.println("알림: 곧 수업이 있습니다.");
-                    System.out.println(subject);
-                    found = true;
-                }
+            if (subject.getDay().equals(currentDay)
+                    && subject.getStartTime().compareTo(currentTime) >= 0) {
+                sb.append("알림: 곧 수업이 있습니다.\n");
+                sb.append(subject).append("\n");
+                found = true;
             }
         }
 
         if (!found) {
-            System.out.println("현재 이후 예정된 수업이 없습니다.");
+            return "현재 이후 예정된 수업이 없습니다.";
         }
+
+        return sb.toString();
     }
 
-    public void saveToFile() {
+    public String saveToFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(subjects);
-            System.out.println("시간표가 파일에 저장되었습니다.");
+            return "시간표가 파일에 저장되었습니다.";
         } catch (IOException e) {
-            System.out.println("파일 저장 중 오류가 발생했습니다: " + e.getMessage());
+            return "파일 저장 중 오류가 발생했습니다: " + e.getMessage();
         }
     }
 
-    public void loadFromFile() {
+    @SuppressWarnings("unchecked")
+    public String loadFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             subjects = (ArrayList<Subject>) ois.readObject();
-            System.out.println("시간표를 파일에서 불러왔습니다.");
+            return "시간표를 파일에서 불러왔습니다.";
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("불러올 파일이 없거나 오류가 발생했습니다: " + e.getMessage());
+            return "불러올 파일이 없거나 오류가 발생했습니다: " + e.getMessage();
         }
     }
 
